@@ -104,7 +104,7 @@ export default function Home() {
       </Stack>
       { error ? (
           <Box sx={{ textAlign: 'center', marginTop: '40vh' }}>
-            <Typography color={'secondary'}>{error}</Typography>
+            <Typography color={'error'}>{error}</Typography>
           </Box>
       ):(
           <List sx={{ width: '100%' }}>

@@ -48,6 +48,14 @@ export const AIModal = ({
   
       return () => clearInterval(interval);
     }
+
+    const handleClose = () => {
+        handleAIModalClose()
+        setTitle('')
+        setBody('')
+        setTypingText('')
+        setGeneratedTextBox(false)
+      }
   
     const saveGeneratedPost = () => {
       try {
@@ -62,9 +70,7 @@ export const AIModal = ({
         };
         const updatedPosts = [newPost, ...existingPosts];
         localStorage.setItem('posts', JSON.stringify(updatedPosts))
-        handleAIModalClose()
-        setTitle('')
-        setBody('')
+        handleClose()
       } catch (error) {
         console.error(error);
       }
@@ -97,13 +103,7 @@ export const AIModal = ({
         }
     }
   
-    const handleClose = () => {
-      handleAIModalClose()
-      setTitle('')
-      setBody('')
-      setTypingText('')
-      setGeneratedTextBox(false)
-    }
+  
   
     useEffect(() => {
       createTypeEffect()
@@ -138,7 +138,7 @@ export const AIModal = ({
               }}}/>
           </FormControl>
           <Stack direction="row" justifyContent='space-between' spacing={2}>
-            <Typography color="secondary">{error}</Typography>
+            <Typography color="error">{error}</Typography>
             <Button variant="contained" endIcon={<Telegram />} onClick={generateNew}>
               Generate
             </Button>
