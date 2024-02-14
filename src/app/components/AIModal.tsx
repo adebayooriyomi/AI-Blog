@@ -62,8 +62,6 @@ export const AIModal = ({
         };
         const updatedPosts = [newPost, ...existingPosts];
         localStorage.setItem('posts', JSON.stringify(updatedPosts))
-        
-        console.log("New post saved to localStorage.");
         handleAIModalClose()
         setTitle('')
         setBody('')
@@ -91,7 +89,6 @@ export const AIModal = ({
           body: JSON.stringify(request)
         })
         const data = await response.json();
-        console.log(data)
         if(data.generated_content){
           setBody(data.generated_content)
           setLoadingText(false)
