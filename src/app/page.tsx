@@ -28,8 +28,6 @@ const initialPostData: PostType = {
   time: ''
 }
 
-export const getDataFromLocalStorage = () => JSON.parse(localStorage.getItem('posts') || '[]');
-
 export default function Home() {
 
   const [posts, setPosts] = useState<PostType[]>([initialPostData])
@@ -44,7 +42,7 @@ export default function Home() {
     setError('')
     setLoading(false)
     try{
-      const data = getDataFromLocalStorage()
+      const data = JSON.parse(localStorage.getItem('posts') || '[]')
       if(data.length <= 0){
         setError('No Post Found. Click "Generate With AI" to Create a new Post')
       }else{

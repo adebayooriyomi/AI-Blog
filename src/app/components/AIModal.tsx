@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Button, Typography, Stack, IconButton, FormControl, TextField, TextareaAutosize } from '@mui/material';
 import { CloseOutlined, DoneOutlined, Telegram } from '@mui/icons-material';
 import { StyledBackdrop , Modal, ModalContent } from './Modal'
-import { PostType, getDataFromLocalStorage } from '../page'
+import { PostType } from '../page'
 
 export const formatDate = () => {
     const currentDate = new Date();
@@ -51,7 +51,7 @@ export const AIModal = ({
   
     const saveGeneratedPost = () => {
       try {
-        const existingPosts = getDataFromLocalStorage()
+        const existingPosts = JSON.parse(localStorage.getItem('posts') || '[]')
         const dateTime = formatDate()
         const newPost: PostType = { 
           id: existingPosts.length+ 1, 
