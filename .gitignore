@@ -1,2 +1,56 @@
-node_modules
-node_modules
+# Node.js files
+node_modules/
+
+# Next.js build directory
+/.next/
+
+# Cache directories
+/.cache/
+/.npm/
+
+# Environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Dependency directories
+/.pnp/
+.pnp.js
+
+# Next.js Image cache directory
+/public/_next/
+
+# Next.js telemetry
+/.next.telemetry.json
+
+# Directory for client-side builds
+/out/
+
+# Yarn's workspace version control
+/.yarn/
+
+# Firebase
+/firebase/
+
+# Next.js export
+/.out/
+
+# Vercel deployment
+.vercel/
+
+# Jest coverage
+/coverage/
