@@ -83,7 +83,7 @@ export const AIModal = ({
       const request = {
           "user_input": title
         }
-      const response = await fetch(`${process.env.API_URL}`, {
+      const response = await fetch(`${process.env.API_URL}/generate-blog-post`, {
           method: 'POST',
           headers: {
             "Content-Type": "application/json",
