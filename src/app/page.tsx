@@ -97,7 +97,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'} sx={{padding: '0 1rem'}}>
-        <Typography variant="h4" color="primary" sx={{fontWeight: 'bold'}}>BLOG</Typography>
+        <Typography variant="h4" color="primary" sx={{fontWeight: 'bold'}}>AI BLOG</Typography>
         <Button variant="contained" endIcon={<Telegram />} onClick={handleShowAIModal}>
           Generate with AI 
         </Button>
