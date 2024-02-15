@@ -156,6 +156,7 @@ export const AIModal = ({
                       minHeight: '30px', 
                       maxHeight: '60vh',
                       border: '1px solid lightgray',
+                      overflow: 'auto',
                       fontSize:'16px', lineHeight: '1.3', padding: '10px', borderRadius: '5px'}}
                       value={typingText}
                       onChange={(e)=>setBody(e.target.value)}
