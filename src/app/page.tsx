@@ -32,7 +32,7 @@ export default function Home() {
 
   const [posts, setPosts] = useState<PostType[]>([initialPostData])
   const [selectedPost, setSelectedPost] = useState<PostType>(initialPostData)
-  const [open, setOpen] = useState(false)
+  const [showEditModal, setShowEditModal] = useState(false)
   const [showAIModal, setShowAIModal] = useState(false)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
@@ -56,16 +56,14 @@ export default function Home() {
     }
   }
 
-  const handleOpen = () => setOpen(true);
-
   const handleEditClose = () => {
-    setOpen(false)
+    setShowEditModal(false)
     getData()
   }
 
   const handleEdit = (selectedPost: PostType) => {
     setSelectedPost(selectedPost)
-    handleOpen()
+    setShowEditModal(true);
   }
 
   const handleShowAIModal = () => {
@@ -151,7 +149,7 @@ export default function Home() {
           )}
         </List>
       )}
-     <EditModal selectedPost={selectedPost} open={open} handleEditClose={handleEditClose}/>
+     <EditModal selectedPost={selectedPost} showEditModal={showEditModal} handleEditClose={handleEditClose}/>
      <AIModal showAIModal={showAIModal} handleAIModalClose={handleAIModalClose}/>
      <DetailModal showDetailModal={showDetailModal} handleDetailClose={handleDetailClose} selectedPost={selectedPost}/>
     </main>

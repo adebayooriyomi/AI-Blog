@@ -15,7 +15,7 @@ import { CloseOutlined, DoneOutlined, Close, Delete } from '@mui/icons-material'
 import { Modal, ModalContent, StyledBackdrop } from './Modal'
 
 
-export const EditModal = ({selectedPost, open, handleEditClose}:{selectedPost: PostType, open: boolean, handleEditClose: ()=> void}) => {
+export const EditModal = ({selectedPost, showEditModal, handleEditClose}:{selectedPost: PostType, showEditModal: boolean, handleEditClose: ()=> void}) => {
 
   const [title, setTitle] = useState<string>('')
   const [body, setBody] = useState<string>('')
@@ -49,7 +49,7 @@ export const EditModal = ({selectedPost, open, handleEditClose}:{selectedPost: P
         <Modal
           aria-labelledby="unstyled-modal-title"
           aria-describedby="unstyled-modal-description"
-          open={open}
+          open={showEditModal}
           onClose={handleEditClose}
           slots={{ backdrop: StyledBackdrop }}
         >

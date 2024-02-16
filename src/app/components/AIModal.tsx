@@ -3,23 +3,9 @@ import { Button, Typography, Stack, IconButton, FormControl, TextField, Textarea
 import { CloseOutlined, DoneOutlined, Telegram } from '@mui/icons-material';
 import { StyledBackdrop , Modal, ModalContent } from './Modal'
 import { PostType } from '../page'
-
-export const formatDate = () => {
-    const currentDate = new Date();
-
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth() + 1; // Months are zero-based, so January is 0
-    const day = currentDate.getDate();
-    const hours = currentDate.getHours();
-    const minutes = currentDate.getMinutes();
-    const seconds = currentDate.getSeconds();
-
-    const formattedDate = `${year}-${month}-${day}`;
-    const formattedTime = `${hours}:${minutes}:${seconds}`;
-  
-    return {date: String(formattedDate), time: String(formattedTime)}; 
-  }
-
+import { generateBlogPost } from '../utils/api';
+import { formatDate } from '../utils/utils'
+import { LoadingDots } from './LoadingDots'
 export const AIModal = ({ 
     showAIModal, 
     handleAIModalClose 
@@ -87,23 +73,14 @@ export const AIModal = ({
       const request = {
           "user_input": title
         }
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/generate-blog-post`, {
-          method: 'POST',
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(request)
-        })
-        const data = await response.json();
-        if(data.generated_content){
-          setBody(data.generated_content)
+      const generatedContent = await generateBlogPost(request)
+        if(generatedContent){
+          setBody(generatedContent)
           setLoadingText(false)
-        }else if(data.msg){
-          setError(data.msg)
+        }else{
+          setError("Network Error")
         }
     }
-  
-  
   
     useEffect(() => {
       createTypeEffect()
@@ -176,13 +153,3 @@ export const AIModal = ({
     )
   }
 
-
-const LoadingDots = () => {
-    return (
-      <div className="loading-dots">
-        <div className="dot"></div>
-        <div className="dot"></div>
-        <div className="dot"></div>
-      </div>
-    );
-};
