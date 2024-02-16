@@ -115,7 +115,7 @@ const DeleteModal = ({selectedPost, showDeleteModal, handleDeleteClose}:{selecte
       onClose={handleDeleteClose}
       slots={{ backdrop: StyledBackdrop }}
     >
-    <ModalContent sx={{ width: '25%' }}>
+    <ModalContent sx={{ width: '100%', maxWidth: '400px' }}>
     <h3>Delete Post</h3>
     <Divider/>
      <Typography p={1} align={'center'}>Are you sure you want to delete<br/> <b>"{selectedPost.title}"</b>?</Typography>
